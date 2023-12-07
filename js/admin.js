@@ -54,9 +54,6 @@ function getC3Data(orderData){
 function sortProduct(productObj){
     const productAry = Object.entries(productObj);   // 直接轉換成相對應的陣列格式
     productAry.sort((a, b) => b[1] - a[1]);          // 從大至小，排序陣列
-    
-    //console.log(productAry);
-    //formatC3Data(rankedObj);
 
     //銷售排名第3之後的品項，歸類到'其他'
     let combinedArray;
@@ -75,7 +72,6 @@ function sortProduct(productObj){
 
 //轉換c3 chart格式
 function formatC3Data(rankedObj){
-    //console.log('rankedObj',rankedObj);
     let ary = Object.keys(rankedObj);
     let c3Data = [];
     ary.forEach(function(item){
@@ -155,12 +151,11 @@ orderList.addEventListener('click',function(e){
         let newState = "";
 
         const orderId = e.target.getAttribute('data-id');
-        if (paid !== true){ 
-            newState = true;                              //這一段無法切換回false
+        if (paid !== 'true'){ 
+            newState = true;                            
         }else{
             newState = false; 
         }
-        //console.log(orderId,newState);
         changeOrderStatus(orderId,newState); }
 })
 
